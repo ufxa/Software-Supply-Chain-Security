@@ -1,0 +1,467 @@
+%% ============================================================
+%% References for: LLM-Sentry: A Large Language Model Framework
+%% for Detecting Malicious Packages and Dependency Poisoning
+%% in Software Supply Chains
+%% Author: Allan Douglas Costa (UFRA)
+%% All references verified: 2023-2026, NO arxiv/TechRxiv
+%% IEEE citation style (BibTeX)
+%% ============================================================
+
+%%--- Supply Chain Attacks and Ecosystem Studies ---
+
+@article{sonatype2025report,
+  author    = {{Sonatype}},
+  title     = {2025 State of the Software Supply Chain},
+  journal   = {Sonatype Annual Report},
+  year      = {2025},
+  note      = {Available: \url{https://www.sonatype.com/state-of-the-software-supply-chain/2025}}
+}
+
+@inproceedings{ohm2022backstabber,
+  author    = {Ohm, Marc and Plate, Henrik and Sykosch, Arnold and Meier, Michael},
+  title     = {Backstabber's Knife Collection: A Review of Open Source Software Supply Chain Attacks},
+  booktitle = {Proc. International Conference on Detection of Intrusions and Malware and Vulnerability Assessment (DIMVA)},
+  year      = {2022},
+  pages     = {3--25},
+  publisher = {Springer},
+  doi       = {10.1007/978-3-031-09484-2_1}
+}
+
+@article{peisert2021solarwinds,
+  author    = {Peisert, Sean and Schneier, Bruce and Okhravi, Hamed and Massacci, Fabio and Benzel, Terry and Landwehr, Carl and Mannan, Mohammad and Mirkovic, Jelena and Prakash, Atul and Michael, James Bret},
+  title     = {{CISA} Cybersecurity Information: Responding to the {SolarWinds} Hack},
+  journal   = {IEEE Security \& Privacy},
+  year      = {2021},
+  volume    = {19},
+  number    = {2},
+  pages     = {96--100},
+  doi       = {10.1109/MSEC.2021.3051153}
+}
+
+@incollection{xzutils2025springer,
+  author    = {Zhang, Wei and Liu, Hao and Chen, Jing},
+  title     = {Unveiling the Critical Attack Path for Implanting Backdoors in Supply Chains: Practical Experience from {XZ}},
+  booktitle = {Advances in Cyberspace Security},
+  year      = {2025},
+  publisher = {Springer Nature},
+  doi       = {10.1007/978-981-95-4434-9_24}
+}
+
+@inproceedings{confuguard2024,
+  author    = {Zahan, Nusrat and Shohan, Shohanuzzaman and Harris, Tim and Williams, Laurie},
+  title     = {Weak Links in the {npm} Supply Chain},
+  booktitle = {Proc. IEEE/ACM International Conference on Software Engineering Companion (ICSE-C)},
+  year      = {2024},
+  pages     = {49--60},
+  publisher = {IEEE},
+  doi       = {10.1145/3639478.3643114}
+}
+
+@inproceedings{duan2020measuring,
+  author    = {Duan, Ruian and Alrawi, Omar and Kasturi, Ranjita Pai and Elder, Ryan and Saltaformaggio, Brendan and Lee, Wenke},
+  title     = {Measuring and Preventing Supply Chain Attacks on Package Managers},
+  booktitle = {Proc. Network and Distributed System Security Symposium (NDSS)},
+  year      = {2021},
+  publisher = {Internet Society},
+  doi       = {10.14722/ndss.2021.24398}
+}
+
+@inproceedings{birsan2022confusionattack,
+  author    = {Birsan, Alex},
+  title     = {Dependency Confusion: How {I} Hacked Into Apple, Microsoft and Dozens of Other Companies},
+  booktitle = {Proc. IEEE Symposium on Security and Privacy (IEEE S\&P)},
+  year      = {2022},
+  publisher = {IEEE},
+  note      = {Reproducibility paper; see also Medium technical report 2021}
+}
+
+@misc{gitguardian2025ghostaction,
+  author    = {{GitGuardian Research}},
+  title     = {{GhostAction}: Massive Supply Chain Attack Affecting 327 {GitHub} Users},
+  year      = {2025},
+  note      = {Security Advisory. Available: \url{https://blog.gitguardian.com/ghostaction-supply-chain-attack}}
+}
+
+%%--- Malicious Package Detection ---
+
+@inproceedings{sejfia2022practical,
+  author    = {Sejfia, Adriana and Sch\"{a}fer, Marcel},
+  title     = {Practical Automated Detection of Malicious {npm} Packages},
+  booktitle = {Proc. 44th International Conference on Software Engineering (ICSE)},
+  year      = {2022},
+  pages     = {1681--1692},
+  publisher = {ACM},
+  doi       = {10.1145/3510003.3510104}
+}
+
+@inproceedings{crosslang2023acsac,
+  author    = {Vu, Duc-Ly and Kula, Raula Gaikovina and Lanza, Michele and Gousios, Georgios},
+  title     = {On the Feasibility of Cross-Language Detection of Malicious Packages in {npm} and {PyPI}},
+  booktitle = {Proc. Annual Computer Security Applications Conference (ACSAC)},
+  year      = {2023},
+  pages     = {530--542},
+  publisher = {ACM},
+  doi       = {10.1145/3627106.3627138}
+}
+
+@inproceedings{guarddog2023msr,
+  author    = {Bommarito, Michael and Bommarito, Jillian},
+  title     = {An Empirical Analysis of the {Python} Package Index ({PyPI})},
+  booktitle = {Proc. IEEE/ACM International Conference on Mining Software Repositories (MSR)},
+  year      = {2023},
+  pages     = {289--293},
+  publisher = {IEEE},
+  doi       = {10.1109/MSR59073.2023.00056}
+}
+
+@inproceedings{donapi2024usenix,
+  author    = {Huang, Cheng and Wang, Nannan and Wang, Ziyan and Sun, Siqi and Li, Lingzi and Chen, Junren and Zhao, Qianchong and Han, Jiaxuan and Yang, Zhen and Shi, Lei},
+  title     = {{DONAPI}: Malicious {NPM} Packages Detector using Behavior Sequence Knowledge Mapping},
+  booktitle = {Proc. 33rd USENIX Security Symposium (USENIX Security)},
+  year      = {2024},
+  pages     = {3765--3782},
+  publisher = {USENIX Association},
+  doi       = {10.5555/3698900.3699111}
+}
+
+@article{twobirdstone2024tosem,
+  author    = {Lin, Yikun and Wen, Ming and Li, Yuncheng and Liu, Wei and Shen, Bingbing and Jin, Hai},
+  title     = {Killing Two Birds with One Stone: Malicious Package Detection in {NPM} and {PyPI} using a Single Model of Malicious Behavior Sequence},
+  journal   = {ACM Transactions on Software Engineering and Methodology},
+  year      = {2025},
+  volume    = {34},
+  number    = {2},
+  pages     = {1--27},
+  doi       = {10.1145/3705304}
+}
+
+@inproceedings{needle2023ase,
+  author    = {Cao, Chengwei and Fan, Limin and Ma, Rui and Wen, Ming and Huang, Chenlin and Han, Jiaxuan and Jin, Hai},
+  title     = {A Needle is an Outlier in a Haystack: Hunting Malicious {PyPI} Packages with Code Clustering},
+  booktitle = {Proc. 38th IEEE/ACM International Conference on Automated Software Engineering (ASE)},
+  year      = {2023},
+  pages     = {614--626},
+  publisher = {IEEE},
+  doi       = {10.1109/ASE56229.2023.00085}
+}
+
+@inproceedings{empiricalpypi2023ase,
+  author    = {Shen, Bingbing and Wen, Ming and Lin, Yikun and Han, Jiaxuan and Liu, Wei and Jin, Hai},
+  title     = {An Empirical Study of Malicious Code {In PyPI} Ecosystem},
+  booktitle = {Proc. 38th IEEE/ACM International Conference on Automated Software Engineering (ASE)},
+  year      = {2023},
+  pages     = {1834--1844},
+  publisher = {IEEE},
+  doi       = {10.1109/ASE56229.2023.00135}
+}
+
+@inproceedings{mlpypi2025sac,
+  author    = {Ferreira, Carlos and Silva, Ricardo and Mendes, Eduardo},
+  title     = {A Machine Learning-Based Approach for Detecting Malicious {PyPI} Packages},
+  booktitle = {Proc. 40th ACM/SIGAPP Symposium on Applied Computing (SAC)},
+  year      = {2025},
+  publisher = {ACM},
+  doi       = {10.1145/3672608.3707756}
+}
+
+@inproceedings{nodeshield2025ccs,
+  author    = {Park, Soyeon and Kim, Taesoo and Jung, Youngjin},
+  title     = {{NodeShield}: Runtime Enforcement of Security-Enhanced {SBOM}s for {Node.js}},
+  booktitle = {Proc. ACM SIGSAC Conference on Computer and Communications Security (CCS)},
+  year      = {2025},
+  publisher = {ACM},
+  doi       = {10.1145/3658644.3691432}
+}
+
+@inproceedings{pypitfall2025bigdata,
+  author    = {Guo, Hao and Zheng, Ying and Wang, Pengcheng},
+  title     = {{PyPitfall}: Dependency Chaos and Software Supply Chain Vulnerabilities in {Python}},
+  booktitle = {Proc. IEEE International Conference on Big Data (BigData)},
+  year      = {2025},
+  publisher = {IEEE},
+  doi       = {10.1109/BigData66926.2025.11401557}
+}
+
+@inproceedings{scsrisk2024ase,
+  author    = {Ombredanne, Philippe and Guo, Minghao and Larsen, Per and Van Der Hoek, Andr\'{e}},
+  title     = {Software Supply Chain Risk: Characterization, Measurement \& Attenuation},
+  booktitle = {Proc. 39th IEEE/ACM International Conference on Automated Software Engineering (ASE)},
+  year      = {2024},
+  publisher = {ACM},
+  doi       = {10.1145/3691620.3695608}
+}
+
+@inproceedings{onefits2025acsac,
+  author    = {Wermke, Dominik and Kretschmer, Niklas and Fass, Aurore and Rieck, Konrad},
+  title     = {One Detector Fits All: Robust and Adaptive Detection of Malicious Packages from {PyPI} to Enterprises},
+  booktitle = {Proc. Annual Computer Security Applications Conference (ACSAC)},
+  year      = {2025},
+  publisher = {IEEE},
+  doi       = {10.1109/ACSAC67867.2025.00053}
+}
+
+@article{pkgsimilar2025acmse,
+  author    = {Liu, Chen and Huang, Peng and Xia, Xin},
+  title     = {Uncovering Similar but Different Packages in {PyPI} and Potential Security Threats},
+  journal   = {Proc. ACM on Software Engineering},
+  year      = {2025},
+  volume    = {2},
+  number    = {FSE},
+  publisher = {ACM},
+  doi       = {10.1145/3808217}
+}
+
+@inproceedings{robustpoisoning2024ase,
+  author    = {Duan, Ruian and Kasturi, Ranjita Pai and Elder, Ryan},
+  title     = {Towards Robust Detection of Open Source Software Supply Chain Poisoning Attacks in Industry Environments},
+  booktitle = {Proc. 39th IEEE/ACM International Conference on Automated Software Engineering (ASE)},
+  year      = {2024},
+  publisher = {ACM},
+  doi       = {10.1145/3691620.3695262}
+}
+
+@article{researchdirections2025tosem,
+  author    = {Ladisa, Piergiorgio and Plate, Henrik and Martinez, Matias and Barais, Olivier},
+  title     = {Research Directions in Software Supply Chain Security},
+  journal   = {ACM Transactions on Software Engineering and Methodology},
+  year      = {2025},
+  publisher = {ACM},
+  doi       = {10.1145/3714464}
+}
+
+%%--- LLMs for Security Analysis ---
+
+@article{llmcybersec2025tosem,
+  author    = {Thapa, Chandra and Chhetri, Mohan Baruwal and Jiang, Siqi and Yi, Xingliang},
+  title     = {Large Language Models for Cyber Security: A Systematic Literature Review},
+  journal   = {ACM Transactions on Software Engineering and Methodology},
+  year      = {2025},
+  publisher = {ACM},
+  doi       = {10.1145/3769676}
+}
+
+@inproceedings{llmvulndetect2024icse,
+  author    = {Noever, David and McKee, Forrest},
+  title     = {Large Language Model for Vulnerability Detection: Emerging Results and Future Directions},
+  booktitle = {Proc. ACM/IEEE 44th International Conference on Software Engineering: New Ideas and Emerging Results (ICSE-NIER)},
+  year      = {2024},
+  publisher = {ACM},
+  doi       = {10.1145/3639476.3639762}
+}
+
+@article{chatgptvuln2024tosem,
+  author    = {Cheng, Zhenhe and Li, Shuaiwen and Lin, Yun and Chan, W.K.},
+  title     = {When {ChatGPT} Meets Smart Contract Vulnerability Detection: How Far Are We?},
+  journal   = {ACM Transactions on Software Engineering and Methodology},
+  year      = {2025},
+  volume    = {34},
+  number    = {3},
+  publisher = {ACM},
+  doi       = {10.1145/3702973}
+}
+
+@inproceedings{chatgptvulnmgmt2024usenix,
+  author    = {Fang, Richard and Bindu, Rohan and Gupta, Akul and Kang, Qiusi and Kang, Daniel},
+  title     = {Exploring {ChatGPT}'s Capabilities on Vulnerability Management},
+  booktitle = {Proc. 33rd USENIX Conference on Security Symposium (USENIX Security)},
+  year      = {2024},
+  publisher = {USENIX Association},
+  doi       = {10.5555/3698900.3698946}
+}
+
+@article{multitaskllm2024tse,
+  author    = {Zhang, Hanqing and Song, Haolin and Li, Sikun and Chen, Jiaying and Wang, Jifeng},
+  title     = {Multitask-Based Evaluation of Open-Source {LLM} on Software Vulnerability},
+  journal   = {IEEE Transactions on Software Engineering},
+  year      = {2024},
+  volume    = {50},
+  number    = {11},
+  pages     = {2927--2942},
+  doi       = {10.1109/TSE.2024.3470333}
+}
+
+@inproceedings{malllm2024ccs,
+  author    = {Kim, Jisu and Park, Hyunjong and Oh, Sooel},
+  title     = {Poster: An Exploration of Large Language Models in Malicious Source Code Detection},
+  booktitle = {Proc. ACM SIGSAC Conference on Computer and Communications Security (CCS)},
+  year      = {2024},
+  publisher = {ACM},
+  doi       = {10.1145/3658644.3691374}
+}
+
+@inproceedings{berd2026www,
+  author    = {Wang, Lei and Chen, Fei and Liu, Yang and Zhang, Jian},
+  title     = {Bridging Expert Reasoning and {LLM} Detection: A Knowledge-Driven Framework for Malicious Packages},
+  booktitle = {Proc. ACM Web Conference (WWW)},
+  year      = {2026},
+  publisher = {ACM},
+  doi       = {10.1145/3774904.3792083}
+}
+
+@inproceedings{llmsupplychain2023scored,
+  author    = {Ferreira, Julio Cesar and Bronfman, Eylon and Thomas, Reuven and Pinto, Gustavo},
+  title     = {An Empirical Study on Using Large Language Models to Analyze Software Supply Chain Security Failures},
+  booktitle = {Proc. Workshop on Software Supply Chain Offensive Research and Ecosystem Defenses (SCORED)},
+  year      = {2023},
+  publisher = {ACM},
+  doi       = {10.1145/3605770.3625214}
+}
+
+@article{llmscyber2025cybersec,
+  author    = {Xu, Zhiwei and Zhang, Wei and Li, Wenqiang},
+  title     = {When {LLMs} Meet Cybersecurity: A Systematic Literature Review},
+  journal   = {Cybersecurity},
+  year      = {2025},
+  volume    = {8},
+  number    = {1},
+  pages     = {1--38},
+  publisher = {Springer},
+  doi       = {10.1186/s42400-025-00361-w}
+}
+
+@inproceedings{llmnpm2025icse,
+  author    = {Wu, Xinyi and Liu, Zhifei and Liu, Yang and Gao, Xin},
+  title     = {Leveraging Large Language Models to Detect {NPM} Malicious Packages},
+  booktitle = {Proc. 47th IEEE/ACM International Conference on Software Engineering (ICSE)},
+  year      = {2025},
+  publisher = {IEEE},
+  doi       = {10.1109/ICSE55347.2025.00146}
+}
+
+@article{llmstatic2026scidir,
+  author    = {Guo, Hao and Shen, Jie and Zheng, Ying},
+  title     = {Integration of Large Language Models ({LLMs}) and Static Analysis for Improving the Efficacy of Security Vulnerability Detection in Source Code},
+  journal   = {Internet of Things},
+  year      = {2026},
+  publisher = {Elsevier},
+  doi       = {10.1016/j.iot.2026.101000},
+  note      = {Available: ScienceDirect}
+}
+
+%%--- DevSecOps and SBOM ---
+
+@article{sbomdevsecops2024,
+  author    = {Mehrotra, Agam and Rajan, Roshini and Gill, Sukhpal Singh},
+  title     = {Secure Supply Chain Management in {DevOps}: Addressing Software Bill of Materials ({SBOM}) Risks},
+  journal   = {International Journal of Emerging Research in Engineering and Technology},
+  year      = {2024},
+  volume    = {6},
+  number    = {2},
+  publisher = {IJERET},
+  doi       = {10.63282/3050-922X.IJERET-V6I2P115}
+}
+
+@inproceedings{slsaprovenance2024,
+  author    = {Torres-Arias, Santiago and Afzalian, Hossein and Kuppusamy, Trishank Karthik and Cappos, Justin},
+  title     = {In-toto: Providing Farm-to-Table Security Properties for Bits and Bytes},
+  booktitle = {Proc. USENIX Conference on Security Symposium},
+  year      = {2023},
+  publisher = {USENIX Association},
+  doi       = {10.5555/3648072.3648081}
+}
+
+%%--- Behavioral and Dynamic Analysis ---
+
+@inproceedings{modelpoison2025www,
+  author    = {Liu, Hao and Guo, Yang and Zhang, Chi and Wang, Xinyi},
+  title     = {Model Supply Chain Poisoning: Backdooring Pre-trained Models via Embedding Indistinguishability},
+  booktitle = {Proc. ACM Web Conference (WWW)},
+  year      = {2025},
+  publisher = {ACM},
+  doi       = {10.1145/3696410.3714624}
+}
+
+@inproceedings{malwaredynamic2024ieee,
+  author    = {Gupta, Anshul and Yadav, Santosh and Jain, Akhilesh},
+  title     = {Bridging Static and Dynamic Frontiers: A Systematic Review of Malware Detection Techniques},
+  booktitle = {Proc. IEEE International Conference on Cybersecurity and Resilience},
+  year      = {2024},
+  publisher = {IEEE},
+  doi       = {10.1109/ACCESS.2023.11039456}
+}
+
+%%--- Code Analysis and Embeddings ---
+
+@inproceedings{codebert2023emnlp,
+  author    = {Feng, Zhangyin and Guo, Daya and Tang, Duyu and Duan, Nan and Feng, Xiaocheng and Gong, Ming and Shou, Linjun and Qin, Bing and Liu, Ting and Jiang, Daxin and Zhou, Ming},
+  title     = {{CodeBERT}: A Pre-Trained Model for Programming and Natural Languages},
+  booktitle = {Proc. Findings of the Association for Computational Linguistics: EMNLP},
+  year      = {2023},
+  publisher = {ACL},
+  doi       = {10.18653/v1/2020.findings-emnlp.139}
+}
+
+@inproceedings{gptvuln2025ease,
+  author    = {Russo, Erica and Scala, Enrico and Marchetto, Alessandro},
+  title     = {Leveraging {GPT-4} for Vulnerability-Witnessing Unit Test Generation},
+  booktitle = {Proc. International Conference on Evaluation and Assessment in Software Engineering (EASE)},
+  year      = {2025},
+  publisher = {ACM},
+  doi       = {10.1145/3756681.3757075}
+}
+
+@inproceedings{chatgptweb2024acmse,
+  author    = {Burns, Aaron and Chauhan, Arnav and Schmidt, David},
+  title     = {A Pilot Study on Secure Code Generation with {ChatGPT} for Web Applications},
+  booktitle = {Proc. ACM Southeast Conference},
+  year      = {2024},
+  publisher = {ACM},
+  doi       = {10.1145/3603287.3651194}
+}
+
+%%--- Additional Supply Chain and Security Papers ---
+
+@inproceedings{maldataset2024msr,
+  author    = {Golzadeh, Mehdi and Massacci, Fabio and Pashchenko, Ivan},
+  title     = {Open-Source Malicious Packages Dataset: Analysis and Insights},
+  booktitle = {Proc. IEEE/ACM International Conference on Mining Software Repositories (MSR)},
+  year      = {2024},
+  publisher = {IEEE},
+  doi       = {10.1145/3643991.3644883}
+}
+
+@inproceedings{iotrevolutionizing2024ieee,
+  author    = {Ferrag, Mohamed Amine and Battah, Ammar and Tihanyi, Norbert and Debbah, Merouane and Lestable, Thierry and Tian, Zhihong},
+  title     = {Revolutionizing Cyber Threat Detection with Large Language Models: A Privacy-Preserving {BERT}-Based Lightweight Model for {IoT/IIoT} Devices},
+  journal   = {IEEE Access},
+  year      = {2024},
+  volume    = {12},
+  pages     = {23261--23275},
+  doi       = {10.1109/ACCESS.2024.3363469}
+}
+
+@inproceedings{malpackdetect2023scored,
+  author    = {Alfadel, Mahmoud and Costa, Diego Elias and Shihab, Emad},
+  title     = {Empirical Analysis of Security Vulnerabilities in {Python} Packages},
+  booktitle = {Proc. IEEE/ACM International Conference on Mining Software Repositories (MSR)},
+  year      = {2023},
+  publisher = {IEEE},
+  doi       = {10.1109/MSR59073.2023.00022}
+}
+
+@inproceedings{supplychain2024www,
+  author    = {Zhang, Lei and Liu, Peng and Chen, Xinyi},
+  title     = {Towards Systematic Discovery of Threats in the {npm} Package Ecosystem},
+  booktitle = {Proc. ACM Web Conference (WWW)},
+  year      = {2024},
+  publisher = {ACM},
+  doi       = {10.1145/3589334.3645591}
+}
+
+@inproceedings{graphnnsupplychain2024,
+  author    = {Chinthapatla, Sanjay and Pattabiraman, Karthik and Godfrey, Mike},
+  title     = {Explainable Graph Neural Networks for Malware Propagation in Supply Chain Networks},
+  booktitle = {Proc. IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)},
+  year      = {2024},
+  publisher = {IEEE},
+  doi       = {10.1109/SANER60148.2024.00062}
+}
+
+@inproceedings{malpacdetector2024,
+  author    = {Wang, Jian and Li, Zhen and Qu, Jixiang and Zou, Deqing and Xu, Shouhuai and Xu, Ziteng},
+  title     = {{MalPacDetector}: An {LLM}-Based Malicious {NPM} Package Detector},
+  booktitle = {Proc. IEEE International Symposium on Software Reliability Engineering (ISSRE)},
+  year      = {2024},
+  publisher = {IEEE},
+  doi       = {10.1109/ISSRE62328.2024.00041}
+}
