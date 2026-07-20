@@ -13,6 +13,7 @@ import hashlib
 import json
 import math
 import os
+import posixpath
 import re
 import subprocess
 import tempfile
@@ -125,27 +126,48 @@ class PRCSResult:
 # Stage 1: Ingestion
 # ------------------------------------------------------------------
 
+def _safe_vfs_path(raw: str) -> Optional[str]:
+    """Sanitiza caminhos de archive para prevenir path traversal (Zip Slip).
+
+    Retorna o caminho relativo normalizado ou None se o caminho for inseguro.
+    Exemplos bloqueados: '../../etc/passwd', '/etc/shadow', '../evil.py'
+    """
+    clean = posixpath.normpath(raw.lstrip("/"))
+    if clean.startswith("..") or posixpath.isabs(clean):
+        return None
+    return clean
+
+
 class PackageIngestionModule:
     """Decompress and normalize package archives."""
 
     SUPPORTED_EXTENSIONS = (".tar.gz", ".whl", ".tgz", ".zip")
 
     def ingest(self, archive_path: str) -> dict:
-        """Return a virtual filesystem dict {relative_path: bytes}."""
+        """Return a virtual filesystem dict {relative_path: bytes}.
+
+        Todos os caminhos de membros sao sanitizados para prevenir path traversal.
+        Entradas com caminhos maliciosos (ex: '../../evil.py') sao silenciosamente
+        ignoradas -- o conteudo nunca e armazenado no VFS.
+        """
         archive_path = Path(archive_path)
         vfs: dict[str, bytes] = {}
 
         if archive_path.suffix == ".whl" or archive_path.suffix == ".zip":
             with zipfile.ZipFile(archive_path, "r") as zf:
                 for name in zf.namelist():
-                    vfs[name] = zf.read(name)
+                    safe = _safe_vfs_path(name)
+                    if safe:
+                        vfs[safe] = zf.read(name)
         else:
             with tarfile.open(archive_path, "r:gz") as tf:
                 for member in tf.getmembers():
                     if member.isfile():
-                        f = tf.extractfile(member)
-                        if f:
-                            vfs[member.name] = f.read()
+                        safe = _safe_vfs_path(member.name)
+                        if safe:
+                            f = tf.extractfile(member)
+                            if f:
+                                vfs[safe] = f.read()
 
         return vfs
 

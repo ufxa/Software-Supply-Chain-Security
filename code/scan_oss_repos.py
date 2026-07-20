@@ -23,6 +23,7 @@ from pathlib import Path
 from typing import Optional
 
 import requests
+from urllib.parse import urlparse
 
 logging.basicConfig(
     level=logging.INFO,
@@ -39,6 +40,28 @@ NPM_JSON_URL = "https://registry.npmjs.org/{package}"
 DOWNLOAD_TIMEOUT = 30
 MAX_ARCHIVE_SIZE_MB = 50
 SCAN_DELAY_SECONDS = 0.5
+
+# Allowlist de hosts confiáveis para download de archives
+_TRUSTED_ARCHIVE_HOSTS = frozenset({
+    "files.pythonhosted.org",
+    "registry.npmjs.org",
+})
+
+
+def _validate_archive_url(url: str) -> str:
+    """Valida que a URL de download pertence a um host confiável (previne SSRF).
+
+    Raises ValueError se o host ou protocolo não forem permitidos.
+    """
+    parsed = urlparse(url)
+    if parsed.scheme != "https":
+        raise ValueError(f"Protocolo não permitido '{parsed.scheme}' em URL: {url}")
+    if parsed.hostname not in _TRUSTED_ARCHIVE_HOSTS:
+        raise ValueError(
+            f"Host não confiável '{parsed.hostname}' rejeitado (SSRF prevention). "
+            f"Hosts permitidos: {_TRUSTED_ARCHIVE_HOSTS}"
+        )
+    return url
 
 
 # ------------------------------------------------------------------
@@ -73,7 +96,8 @@ class PyPIClient:
                     log.warning("Skipping %s: size %.1f MB", f["filename"], size_mb)
                     continue
                 dest = Path(dest_dir) / f["filename"]
-                r = requests.get(f["url"], timeout=DOWNLOAD_TIMEOUT, stream=True)
+                validated_url = _validate_archive_url(f["url"])
+                r = requests.get(validated_url, timeout=DOWNLOAD_TIMEOUT, stream=True)
                 with open(dest, "wb") as fh:
                     for chunk in r.iter_content(8192):
                         fh.write(chunk)
@@ -106,6 +130,11 @@ class NpmClient:
         version_data = meta.get("versions", {}).get(latest, {})
         tarball_url = version_data.get("dist", {}).get("tarball")
         if not tarball_url:
+            return None
+        try:
+            tarball_url = _validate_archive_url(tarball_url)
+        except ValueError as exc:
+            log.error("URL rejeitada por validação de segurança: %s", exc)
             return None
         filename = f"{package_name.replace('/', '_')}-{latest}.tgz"
         dest = Path(dest_dir) / filename
