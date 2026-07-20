@@ -1,0 +1,35 @@
+{
+  "system": "GuardDog",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "fpr": 0.0,
+  "auc": 1.0,
+  "bootstrap_ci": {
+    "precision": {
+      "mean": 1.0,
+      "ci_lo": 1.0,
+      "ci_hi": 1.0
+    },
+    "recall": {
+      "mean": 1.0,
+      "ci_lo": 1.0,
+      "ci_hi": 1.0
+    },
+    "f1": {
+      "mean": 1.0,
+      "ci_lo": 1.0,
+      "ci_hi": 1.0
+    },
+    "fpr": {
+      "mean": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0
+    },
+    "auc": {
+      "mean": 1.0,
+      "ci_lo": 1.0,
+      "ci_hi": 1.0
+    }
+  }
+}

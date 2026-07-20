@@ -1,0 +1,24 @@
+\begin{tikzpicture}
+\begin{axis}[
+  width=8cm, height=5.5cm,
+  xlabel={$w_\text{meta}$},
+  ylabel={Score},
+  ymin=0.85, ymax=0.98,
+  xmin=0.04, xmax=0.52,
+  xtick={0.05,0.10,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.50},
+  x tick label style={font=\scriptsize},
+  legend style={at={(0.98,0.02)}, anchor=south east, font=\small},
+  legend cell align={left},
+  grid=major, grid style={dashed, gray!30},
+]
+% Default w_meta marker
+\addplot[gray, dashed] coordinates {(0.25,0.85)(0.25,0.98)};
+\node[font=\scriptsize, rotate=90] at (axis cs:0.235,0.91)  {default};
+\addplot[blue!80!black, thick, mark=*, mark size=1.5pt]
+  coordinates {(0.05,1.0000) (0.10,1.0000) (0.15,1.0000) (0.20,1.0000) (0.25,1.0000) (0.30,1.0000) (0.35,1.0000) (0.40,1.0000) (0.45,1.0000) (0.50,1.0000)};
+\addlegendentry{F$_1$}
+\addplot[red!70!black, thick, mark=square*, mark size=1.5pt, dashed]
+  coordinates {(0.05,1.0000) (0.10,1.0000) (0.15,1.0000) (0.20,1.0000) (0.25,1.0000) (0.30,1.0000) (0.35,1.0000) (0.40,1.0000) (0.45,1.0000) (0.50,1.0000)};
+\addlegendentry{AUC}
+\end{axis}
+\end{tikzpicture}

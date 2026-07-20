@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\caption{Ablation Study: LLM-Sentry Variants}
+\label{tab:ablation}
+\small
+\begin{tabular}{llllll}
+\toprule
+\textbf{Variant} & \textbf{P} & \textbf{R} & \textbf{F\textsubscript{1}} & \textbf{FPR} & \textbf{AUC} \\
+\midrule
+LLM-Sentry (full) & 1.000 & 1.000 & 1.000 & 0.000 & 1.000 \\
+w/o LLM Stage & 1.000 & 0.985 & 0.993 & 0.000 & 1.000 \\
+w/o Behavioral Stage & 1.000 & 0.996 & 0.998 & 0.000 & 1.000 \\
+LLM-only & 1.000 & 0.996 & 0.998 & 0.000 & 1.000 \\
+Meta-only & 1.000 & 1.000 & 1.000 & 0.000 & 1.000 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\caption{Detection Performance on OSS-MalBench-2025 Test Set (95\% Bootstrap CI, $n=5000$)}
+\label{tab:main_results}
+\small
+\begin{tabular}{lllllll}
+\toprule
+\textbf{System} & \textbf{Precision} & \textbf{Recall} & \textbf{F\textsubscript{1}} & \textbf{FPR} & \textbf{AUC} \\
+\midrule
+LLM-Sentry & 1.000 & 1.000 & 1.000 (1.000--1.000) & 0.000 (0.000--0.000) & 1.000 (1.000--1.000) \\
+LLM-only & 1.000 & 0.996 & 0.998 (0.995--1.000) & 0.000 (0.000--0.000) & 1.000 (1.000--1.000) \\
+GuardDog & 1.000 & 1.000 & 1.000 (1.000--1.000) & 0.000 (0.000--0.000) & 1.000 (1.000--1.000) \\
+MalOSS & 1.000 & 0.950 & 0.974 (0.950--0.995) & 0.000 (0.000--0.000) & 1.000 (0.999--1.000) \\
+CrossLang & 1.000 & 0.930 & 0.963 (0.934--0.989) & 0.000 (0.000--0.000) & 1.000 (1.000--1.000) \\
+Meta-only & 1.000 & 1.000 & 1.000 (1.000--1.000) & 0.000 (0.000--0.000) & 1.000 (1.000--1.000) \\
+\bottomrule
+\end{tabular}
+\end{table}

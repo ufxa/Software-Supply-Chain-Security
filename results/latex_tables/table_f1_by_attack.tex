@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\caption{F\textsubscript{1} Score by Attack Category}
+\label{tab:f1_by_attack}
+\small
+\begin{tabular}{lllllll}
+\toprule
+\textbf{Attack Type} & \textbf{LLM-Sentry} & \textbf{LLM-only} & \textbf{GuardDog} & \textbf{MalOSS} & \textbf{CrossLang} & \textbf{Meta-only} \\
+\midrule
+credential\_harvesting & 1.000 & 1.000 & 1.000 & 1.000 & 0.947 & 1.000 \\
+code\_injection & 1.000 & 0.994 & 1.000 & 0.919 & 1.000 & 1.000 \\
+typosquatting & 1.000 & 1.000 & 1.000 & 0.974 & 0.974 & 1.000 \\
+dependency\_confusion & 1.000 & 0.996 & 1.000 & 1.000 & 0.919 & 1.000 \\
+cryptomining & 1.000 & 1.000 & 1.000 & 0.974 & 0.974 & 1.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
