@@ -1,0 +1,93 @@
+[bootstrap] Installing: ['scikit-learn']
+2026-07-20 17:54:26,012 [INFO] ======================================================================
+2026-07-20 17:54:26,013 [INFO] LLM-Sentry A100 Runner — start
+2026-07-20 17:54:26,013 [INFO] Results directory: /tmp/llmsentry/results
+2026-07-20 17:54:26,013 [INFO] ======================================================================
+2026-07-20 17:54:26,013 [INFO] [Stage 0] Loading dataset…
+2026-07-20 17:54:26,013 [INFO] Loading dataset from /tmp/dataset.csv
+2026-07-20 17:54:26,027 [INFO]   Total packages: 5963
+2026-07-20 17:54:26,028 [INFO]   Malicious: 2000 | Benign: 3963
+2026-07-20 17:54:26,324 [INFO]   Train=4770 Val=596 Test=597
+2026-07-20 17:54:26,362 [INFO] [Stage 1] Generating synthetic code snippets…
+train:   0%|          | 0/4770 [00:00<?, ?it/s]train:  19%|█▉        | 923/4770 [00:00<00:00, 9223.54it/s]train:  39%|███▉      | 1875/4770 [00:00<00:00, 9396.45it/s]train:  59%|█████▉    | 2821/4770 [00:00<00:00, 9420.76it/s]train:  79%|███████▉  | 3768/4770 [00:00<00:00, 9439.34it/s]train:  99%|█████████▉| 4718/4770 [00:00<00:00, 9458.57it/s]train: 100%|██████████| 4770/4770 [00:00<00:00, 9426.57it/s]
+val:   0%|          | 0/596 [00:00<?, ?it/s]val: 100%|██████████| 596/596 [00:00<00:00, 9497.09it/s]
+test:   0%|          | 0/597 [00:00<?, ?it/s]test: 100%|██████████| 597/597 [00:00<00:00, 9444.99it/s]
+2026-07-20 17:54:26,996 [INFO] [Stage 2] Extracting metadata features…
+2026-07-20 17:54:32,000 [INFO] [Stage 2] Training metadata LR classifier…
+2026-07-20 17:54:36,046 [INFO] Meta LR 5-fold F1: 0.9659 ± 0.0070
+2026-07-20 17:54:36,090 [INFO]   Stage 2 complete. CV F1=0.9659
+2026-07-20 17:54:36,090 [INFO] [Stage 3] Computing CodeBERT embeddings…
+2026-07-20 17:54:39,257 [INFO] Loading microsoft/codebert-base…
+2026-07-20 17:54:41,571 [INFO] GPU: NVIDIA A100 80GB PCIe
+2026-07-20 17:54:42,014 [INFO]   Embedding training set…
+2026-07-20 17:54:54,920 [INFO]   Embedding validation set…
+2026-07-20 17:54:56,488 [INFO]   Embedding test set…
+2026-07-20 17:54:58,076 [INFO]   Stage 3 complete. Malicious centroid norm=18.1351
+2026-07-20 17:54:58,197 [INFO] [Stage 3c] Computing behavioral scores…
+2026-07-20 17:54:58,595 [INFO] [Stage 4] PRCS weight grid search on validation set…
+2026-07-20 17:54:59,030 [INFO]   Optimal weights: w1=0.00 w2=0.70 w3=0.30
+2026-07-20 17:54:59,030 [INFO] [Stage 5] Full test set evaluation…
+2026-07-20 17:55:36,005 [INFO]   Test metrics (bootstrap):
+2026-07-20 17:55:36,005 [INFO]     f1: 1.0000  [1.0000, 1.0000]
+2026-07-20 17:55:36,005 [INFO]     precision: 1.0000  [1.0000, 1.0000]
+2026-07-20 17:55:36,005 [INFO]     recall: 1.0000  [1.0000, 1.0000]
+2026-07-20 17:55:36,005 [INFO]     fpr: 0.0000  [0.0000, 0.0000]
+2026-07-20 17:55:36,005 [INFO]     auc_roc: 1.0000  [1.0000, 1.0000]
+2026-07-20 17:55:36,005 [INFO]     pr_auc: 1.0000  [1.0000, 1.0000]
+2026-07-20 17:55:36,013 [INFO]   Saved test_predictions.csv (597 rows)
+2026-07-20 17:55:36,013 [INFO] [Stage 6] Ablation study…
+2026-07-20 17:55:36,018 [INFO]   Ablation A_full: F1=1.0000  AUC=1.0000
+2026-07-20 17:55:36,024 [INFO]   Ablation B_meta_beh: F1=0.0000  AUC=0.9904
+2026-07-20 17:55:36,029 [INFO]   Ablation C_meta_sem: F1=0.9679  AUC=0.9996
+2026-07-20 17:55:36,035 [INFO]   Ablation D_meta: F1=0.9651  AUC=0.9904
+2026-07-20 17:55:36,040 [INFO]   Ablation E_sem: F1=0.6920  AUC=1.0000
+2026-07-20 17:55:36,045 [INFO]   Ablation F_beh: F1=0.0000  AUC=0.5000
+2026-07-20 17:55:36,046 [INFO] [Stage 7] Cross-ecosystem evaluation…
+2026-07-20 17:55:36,049 [INFO]   Cross-ecosystem [npm_to_pypi]: computing features…
+2026-07-20 17:55:38,002 [INFO]   Cross-ecosystem [npm_to_pypi]: embedding test set…
+2026-07-20 17:55:39,063 [INFO]   [npm_to_pypi] F1=0.9670  AUC=1.0000
+2026-07-20 17:55:39,076 [INFO]   Cross-ecosystem [pypi_to_npm]: computing features…
+2026-07-20 17:55:43,144 [INFO]   Cross-ecosystem [pypi_to_npm]: embedding test set…
+2026-07-20 17:55:43,417 [INFO]   [pypi_to_npm] F1=0.9827  AUC=1.0000
+2026-07-20 17:55:43,418 [INFO] [Stage 8] PRCS sensitivity analysis…
+2026-07-20 17:55:43,446 [INFO] 
+2026-07-20 17:55:43,446 [INFO] ======================================================================
+2026-07-20 17:55:43,446 [INFO] RESULTS SUMMARY
+2026-07-20 17:55:43,446 [INFO] ======================================================================
+2026-07-20 17:55:43,446 [INFO] Metric                   Mean                95% CI
+2026-07-20 17:55:43,446 [INFO] ------------------------------------------------------
+2026-07-20 17:55:43,446 [INFO] f1                     1.0000  [1.0000, 1.0000]
+2026-07-20 17:55:43,446 [INFO] precision              1.0000  [1.0000, 1.0000]
+2026-07-20 17:55:43,446 [INFO] recall                 1.0000  [1.0000, 1.0000]
+2026-07-20 17:55:43,446 [INFO] fpr                    0.0000  [0.0000, 0.0000]
+2026-07-20 17:55:43,446 [INFO] auc_roc                1.0000  [1.0000, 1.0000]
+2026-07-20 17:55:43,446 [INFO] pr_auc                 1.0000  [1.0000, 1.0000]
+2026-07-20 17:55:43,446 [INFO] 
+2026-07-20 17:55:43,446 [INFO] Ablation variant           F1   AUC-ROC
+2026-07-20 17:55:43,446 [INFO] ----------------------------------------
+2026-07-20 17:55:43,446 [INFO] A_full                 1.0000    1.0000
+2026-07-20 17:55:43,446 [INFO] B_meta_beh             0.0000    0.9904
+2026-07-20 17:55:43,446 [INFO] C_meta_sem             0.9679    0.9996
+2026-07-20 17:55:43,446 [INFO] D_meta                 0.9651    0.9904
+2026-07-20 17:55:43,446 [INFO] E_sem                  0.6920    1.0000
+2026-07-20 17:55:43,446 [INFO] F_beh                  0.0000    0.5000
+2026-07-20 17:55:43,446 [INFO] 
+2026-07-20 17:55:43,446 [INFO] Cross-Ecosystem                 F1   AUC-ROC
+2026-07-20 17:55:43,447 [INFO] ---------------------------------------------
+2026-07-20 17:55:43,447 [INFO] npm_to_pypi                 0.9670    1.0000
+2026-07-20 17:55:43,447 [INFO] pypi_to_npm                 0.9827    1.0000
+2026-07-20 17:55:43,447 [INFO] 
+2026-07-20 17:55:43,447 [INFO] Optimal PRCS weights: w1=0.00  w2=0.70  w3=0.30
+2026-07-20 17:55:43,447 [INFO] Total runtime: 1.3 min
+2026-07-20 17:55:43,447 [INFO] ======================================================================
+2026-07-20 17:55:43,447 [INFO] All artefacts saved to: /tmp/llmsentry/results
+2026-07-20 17:55:43,447 [INFO] DONE
+
+>>> LLM-SENTRY EXPERIMENT COMPLETE <<<
+F1       : 1.0000  [1.0000, 1.0000]
+Precision: 1.0000
+Recall   : 1.0000
+AUC-ROC  : 1.0000
+PR-AUC   : 1.0000
+Runtime  : 1.3 min
+Results  : /tmp/llmsentry/results

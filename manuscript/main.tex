@@ -281,6 +281,7 @@ Fig.~\ref{fig:seqdiag} presents the sequence diagram of a single package analysi
 
 \begin{figure}[htbp]
 \centering
+\resizebox{\columnwidth}{!}{%
 \begin{tikzpicture}[
   font=\scriptsize,
   every node/.style={},
@@ -313,8 +314,8 @@ Fig.~\ref{fig:seqdiag} presents the sequence diagram of a single package analysi
 \draw[msg] (5*\dx,-5.6*\dy) -- (\dx,-5.6*\dy) node[midway,above]{\texttt{PRCS, label}};
 \draw[msg] (\dx,-6.2*\dy) -- (0,-6.2*\dy) node[midway,above]{\texttt{report(PRCS, label)}};
 
-\end{tikzpicture}
-\caption{Sequence diagram of a single-package analysis request in LLM-Sentry.}
+\end{tikzpicture}}
+\caption{LLM-Sentry single-package analysis sequence.}
 \label{fig:seqdiag}
 \end{figure}
 
@@ -366,9 +367,9 @@ The optimal weights $\mathbf{w} = [w_1, w_2, w_3]^\top = [0.25, 0.50, 0.25]^\top
 
 \textit{Proof}: Part (i) follows from linearity of Eq.~(\ref{eq:prcs}) and $w_k > 0$. For part (ii): $|\text{PRCS}(p_A) - \text{PRCS}(p_B)| = |\sum_k w_k (s_k(p_A) - s_k(p_B))| \leq \sum_k w_k |s_k(p_A) - s_k(p_B)| \leq \|\mathbf{s}(p_A) - \mathbf{s}(p_B)\|_\infty \cdot \sum_k w_k = \|\mathbf{s}(p_A) - \mathbf{s}(p_B)\|_\infty$, since $\sum_k w_k = 1$. This Lipschitz bound implies that PRCS is robust to small perturbations in individual sub-scores. $\square$
 
-\textbf{Proposition 2} (Boundedness and Calibration Optimality): $\text{PRCS}(p) \in [0,1]$ for all packages $p$. Moreover, for fixed $\mathbf{w}$, the optimal threshold $\tau^*$ that minimizes $\text{FPR} + \lambda \cdot \text{FNR}$ for any $\lambda > 0$ exists and satisfies $\tau^* \in (0,1)$ whenever the sub-score distributions of malicious and benign packages overlap.
+\textbf{Proposition 2} (Boundedness and Threshold Existence): $\text{PRCS}(p) \in [0,1]$ for all packages $p$. Moreover, for fixed $\mathbf{w}$, there exists a threshold $\tau^* \in (0,1)$ that minimizes $f(\tau) = \text{FPR}(\tau) + \lambda \cdot \text{FNR}(\tau)$ for any $\lambda > 0$, provided the sub-score distributions of malicious and benign packages overlap.
 
-\textit{Proof}: Boundedness: each $s_k(p) \in [0,1]$ by the sigmoid range, cosine similarity normalization (restricted to $[0,1]$ by construction), and the $\min(1,\cdot)$ clamp in Eq.~(\ref{eq:sbeh}). Since $\sum_k w_k = 1$ and $w_k \geq 0$, PRCS is a convex combination, hence $\text{PRCS}(p) \in [0,1]$. For the threshold: define $f(\tau) = \text{FPR}(\tau) + \lambda \cdot \text{FNR}(\tau)$. As $\tau \to 0$, $\text{FPR} \to 1$ and $\text{FNR} \to 0$; as $\tau \to 1$, $\text{FPR} \to 0$ and $\text{FNR} \to 1$. Under distributional overlap, $f$ is continuous and achieves its minimum at a unique $\tau^* \in (0,1)$ by the intermediate value theorem applied to $f'(\tau) = 0$. $\square$
+\textit{Proof}: Boundedness: each $s_k(p) \in [0,1]$ by the sigmoid range, cosine similarity normalization (restricted to $[0,1]$ by construction), and the $\min(1,\cdot)$ clamp in Eq.~(\ref{eq:sbeh}). Since $\sum_k w_k = 1$ and $w_k \geq 0$, PRCS is a convex combination, hence $\text{PRCS}(p) \in [0,1]$. For the threshold: define $f(\tau) = \text{FPR}(\tau) + \lambda \cdot \text{FNR}(\tau)$. As $\tau \to 0$, $\text{FPR} \to 1$ and $\text{FNR} \to 0$, giving $f(0) = 1$; as $\tau \to 1$, $\text{FPR} \to 0$ and $\text{FNR} \to 1$, giving $f(1) = \lambda$. Under distributional overlap, $f$ is continuous and strictly greater than $\min(1, \lambda)$ at the boundary points, so a minimizer $\tau^* \in (0,1)$ exists by the extreme value theorem. $\square$
 
 %%% ============================================================
 \section{Experimental Setup}
