@@ -14,7 +14,7 @@ Split used in this paper:
 - Benign: 7,541 (80.1%)
 - Ecosystems: npm, PyPI
 
-## 2. MalwareBazaar-OSS (MB-OSS)
+## 2. OSS-MalBench-2025 (OMB-25)
 
 Constructed by merging:
 1. ConfuGuard dependency confusion dataset (630 confirmed attacks)
@@ -47,5 +47,5 @@ https://github.com/ufxa/Software-Supply-Chain-Security
 
 The `data/` directory contains:
 - `pmd_labels.csv`: Package name, version, ecosystem, label for PMD split
-- `mboss_labels.csv`: Package name, version, ecosystem, label, attack_category for MB-OSS split
+- `mboss_labels.csv`: Package name, version, ecosystem, label, attack_category for OMB-25 split
 - `benign_baseline.csv`: Top-10,000 benign packages sampled from registries

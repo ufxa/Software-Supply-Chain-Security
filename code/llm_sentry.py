@@ -505,6 +505,61 @@ class PRCSEngine:
         """Eq. (4): clamped behavioral deviation score."""
         return min(1.0, b_dev)
 
+    def train_meta_classifier(
+        self,
+        X: "np.ndarray",
+        y: "np.ndarray",
+        model_path: Optional[str] = None,
+    ) -> None:
+        """Train the logistic regression metadata classifier on labelled data.
+
+        Args:
+            X: Feature matrix of shape (n_samples, 22) -- pre-normalised to [0,1].
+            y: Binary label vector of shape (n_samples,) with 1=malicious, 0=benign.
+            model_path: If given, save the fitted model to this path via joblib.
+        """
+        try:
+            from sklearn.linear_model import LogisticRegression
+            from sklearn.preprocessing import StandardScaler
+        except ImportError as exc:
+            raise ImportError("scikit-learn is required for train_meta_classifier.") from exc
+
+        scaler = StandardScaler()
+        X_scaled = scaler.fit_transform(X)
+
+        clf = LogisticRegression(
+            C=1.0,
+            max_iter=1000,
+            solver="lbfgs",
+            class_weight="balanced",
+            random_state=42,
+        )
+        clf.fit(X_scaled, y)
+
+        self._beta = (clf.coef_[0] * (1.0 / (scaler.scale_ + 1e-9))).astype(np.float32)
+        self._beta0 = float(clf.intercept_[0] - np.dot(clf.coef_[0], scaler.mean_ / (scaler.scale_ + 1e-9)))
+
+        if model_path:
+            try:
+                import joblib
+                joblib.dump({"beta": self._beta, "beta0": self._beta0}, model_path)
+            except ImportError:
+                import pickle
+                with open(model_path, "wb") as fh:
+                    pickle.dump({"beta": self._beta, "beta0": self._beta0}, fh)
+
+    def load_meta_classifier(self, model_path: str) -> None:
+        """Load previously trained metadata classifier coefficients."""
+        try:
+            import joblib
+            params = joblib.load(model_path)
+        except (ImportError, Exception):
+            import pickle
+            with open(model_path, "rb") as fh:
+                params = pickle.load(fh)
+        self._beta = np.array(params["beta"], dtype=np.float32)
+        self._beta0 = float(params["beta0"])
+
     def compute(self, features: PackageFeatures) -> PRCSResult:
         """Compute PRCS and return a PRCSResult."""
         meta_vec = np.array([

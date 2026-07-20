@@ -13,7 +13,7 @@
 
 ## Abstract
 
-Software supply chain attacks via public package registries such as npm and PyPI have grown exponentially, with over 1.2 million malicious packages catalogued through 2025. LLM-Sentry is a multi-stage detection framework combining fine-tuned LLMs with static metadata analysis and behavioral sequence modeling. It introduces the **Package Risk Confidence Score (PRCS)**, a novel composite metric achieving F1 = 0.961 on the MB-OSS benchmark of 18,942 labeled packages.
+Software supply chain attacks via public package registries such as npm and PyPI have grown exponentially, with over 1.2 million malicious packages catalogued through 2025. LLM-Sentry is a multi-stage detection framework combining fine-tuned LLMs with static metadata analysis and behavioral sequence modeling. It introduces the **Package Risk Confidence Score (PRCS)**, a novel composite metric achieving F1 = 0.961 on the OMB-25 benchmark of 18,942 labeled packages.
 
 ---
 
@@ -46,7 +46,7 @@ Software supply chain attacks via public package registries such as npm and PyPI
 - Packages: 9,411 (1,870 malicious, 7,541 benign)
 - Access: https://github.com/DataDog/guarddog
 
-### MalwareBazaar-OSS (MB-OSS)
+### OSS-MalBench-2025 (OMB-25)
 - Constructed from: ConfuGuard dataset + MSR 2024 corpus + registry sampling
 - Packages: 18,942 (4,216 malicious, 14,726 benign)
 - Attack categories: typosquatting, dependency confusion, code injection, credential harvesting, crypto-mining
