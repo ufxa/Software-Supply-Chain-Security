@@ -134,6 +134,7 @@ Table~\ref{tab:related} summarizes the positioning of LLM-Sentry relative to pri
 \label{tab:related}
 \centering
 \small
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lcccccc}
 \toprule
 \textbf{System} & \textbf{LLM} & \textbf{Meta.} & \textbf{Behav.} & \textbf{Multi-Eco.} & \textbf{Metric} & \textbf{F1} \\
@@ -146,7 +147,7 @@ TwoBirds \cite{twobirdstone2024tosem} & Partial & No & Yes & Yes & No & 0.921 \\
 BERD \cite{berd2026www} & Yes & Yes & No & Yes & No & 0.934 \\
 \textbf{LLM-Sentry} & \textbf{Yes} & \textbf{Yes} & \textbf{Yes} & \textbf{Yes} & \textbf{PRCS} & \textbf{0.961} \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 %%% ============================================================
@@ -204,6 +205,7 @@ Metadata features $\mathbf{m} \in \mathbb{R}^{d_m}$ are extracted from the packa
 \label{tab:features}
 \centering
 \small
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{llc}
 \toprule
 \textbf{Feature} & \textbf{Description} & \textbf{Type} \\
@@ -231,7 +233,7 @@ Metadata features $\mathbf{m} \in \mathbb{R}^{d_m}$ are extracted from the packa
 \texttt{author\_email} & Email domain entropy & Float \\
 \texttt{publish\_date} & Days since first publication & Int \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 \subsection{Stage 3: Static AST and Code Embedding}
@@ -416,10 +418,11 @@ LLM-Sentry is implemented in Python 3.11. The LLM backend uses the OpenAI API (G
 Table~\ref{tab:results_main} presents the main detection results on MB-OSS. LLM-Sentry achieves an F1-score of 0.961 (95\% CI: 0.957--0.965), outperforming all baselines. BERD, the closest competitor, reaches F1 = 0.934, while DONAPI and TwoBirds achieve 0.913 and 0.921 respectively.
 
 \begin{table}[htbp]
-\caption{Main Detection Results on MB-OSS Test Set (18,942 packages). CI = 95\% Confidence Interval.}
+\caption{Main Results on MB-OSS (18,942 pkgs). CI = 95\%.}
 \label{tab:results_main}
 \centering
 \small
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lccccc}
 \toprule
 \textbf{System} & \textbf{P} & \textbf{R} & \textbf{F1} & \textbf{FPR} & \textbf{AUC} \\
@@ -434,7 +437,7 @@ BERD & 0.941 & 0.927 & 0.934 & 0.028 & 0.978 \\
 \textbf{LLM-Sentry} & \textbf{0.963} & \textbf{0.959} & \textbf{0.961} & \textbf{0.012} & \textbf{0.991} \\
 \quad CI & [0.958,0.968] & [0.953,0.965] & [0.957,0.965] & [0.009,0.015] & [0.988,0.994] \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 \subsection{Performance by Attack Category}
