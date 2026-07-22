@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+
+# Temp / checkpoints
+data/.sha256_checkpoint.json
+*.log.tmp
+
+# Large binary artifacts (PDFs são incluídos explicitamente via git add)

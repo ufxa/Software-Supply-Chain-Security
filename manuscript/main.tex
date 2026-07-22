@@ -279,19 +279,17 @@ where $\text{NET}(\mathcal{S})$ counts network-related API calls and $\alpha = 0
 
 Fig.~\ref{fig:seqdiag} presents the sequence diagram of a single package analysis request through LLM-Sentry.
 
-\begin{figure}[htbp]
+\begin{figure*}[t]
 \centering
-\resizebox{\columnwidth}{!}{%
 \begin{tikzpicture}[
-  font=\scriptsize,
-  every node/.style={},
+  font=\small,
   lifeline/.style={draw=gray!60, dashed},
   msg/.style={->, >=stealth, thick},
-  actor/.style={rectangle, draw=blue!60, fill=blue!10, minimum width=1.3cm, minimum height=0.5cm, align=center}
+  actor/.style={rectangle, draw=blue!60, fill=blue!10, minimum width=2.0cm, minimum height=0.65cm, align=center}
 ]
 
-\def\dx{2.2}
-\def\dy{0.55}
+\def\dx{2.6}
+\def\dy{0.65}
 
 \node[actor] (client) at (0,0) {CI/CD\\Client};
 \node[actor] (ingest) at (\dx,0) {Ingestion\\Module};
@@ -301,23 +299,23 @@ Fig.~\ref{fig:seqdiag} presents the sequence diagram of a single package analysi
 \node[actor] (prcs) at (5*\dx,0) {PRCS\\Engine};
 
 \foreach \x in {0,\dx,2*\dx,3*\dx,4*\dx,5*\dx}
-  \draw[lifeline] (\x,-0.25) -- (\x,-7*\dy);
+  \draw[lifeline] (\x,-0.33) -- (\x,-7.5*\dy);
 
-\draw[msg] (0,-1*\dy) -- (\dx,-1*\dy) node[midway,above]{\texttt{submit(pkg)}};
-\draw[msg] (\dx,-1.6*\dy) -- (2*\dx,-1.6*\dy) node[midway,above]{\texttt{extract\_meta()}};
-\draw[msg] (2*\dx,-2.0*\dy) -- (\dx,-2.0*\dy) node[midway,above]{\texttt{meta\_vector}};
-\draw[msg] (\dx,-2.6*\dy) -- (3*\dx,-2.6*\dy) node[midway,above]{\texttt{analyze\_code(ast,script)}};
-\draw[msg] (3*\dx,-3.2*\dy) -- (\dx,-3.2*\dy) node[midway,above]{\texttt{llm\_confidence}};
-\draw[msg] (\dx,-3.8*\dy) -- (4*\dx,-3.8*\dy) node[midway,above]{\texttt{sandbox\_execute()}};
-\draw[msg] (4*\dx,-4.4*\dy) -- (\dx,-4.4*\dy) node[midway,above]{\texttt{api\_sequence}};
-\draw[msg] (\dx,-5.0*\dy) -- (5*\dx,-5.0*\dy) node[midway,above]{\texttt{compute\_PRCS(m,e,c,b)}};
-\draw[msg] (5*\dx,-5.6*\dy) -- (\dx,-5.6*\dy) node[midway,above]{\texttt{PRCS, label}};
-\draw[msg] (\dx,-6.2*\dy) -- (0,-6.2*\dy) node[midway,above]{\texttt{report(PRCS, label)}};
+\draw[msg] (0,-1*\dy)   -- (\dx,-1*\dy)     node[midway,above]{\texttt{submit(pkg)}};
+\draw[msg] (\dx,-1.7*\dy) -- (2*\dx,-1.7*\dy) node[midway,above]{\texttt{extract\_meta()}};
+\draw[msg] (2*\dx,-2.3*\dy) -- (\dx,-2.3*\dy) node[midway,above]{\texttt{meta\_vector}};
+\draw[msg] (\dx,-3.0*\dy) -- (3*\dx,-3.0*\dy) node[midway,above]{\texttt{analyze\_code(ast,script)}};
+\draw[msg] (3*\dx,-3.7*\dy) -- (\dx,-3.7*\dy) node[midway,above]{\texttt{llm\_confidence}};
+\draw[msg] (\dx,-4.4*\dy) -- (4*\dx,-4.4*\dy) node[midway,above]{\texttt{sandbox\_execute()}};
+\draw[msg] (4*\dx,-5.1*\dy) -- (\dx,-5.1*\dy) node[midway,above]{\texttt{api\_sequence}};
+\draw[msg] (\dx,-5.8*\dy) -- (5*\dx,-5.8*\dy) node[midway,above]{\texttt{compute\_PRCS(m,e,c,b)}};
+\draw[msg] (5*\dx,-6.5*\dy) -- (\dx,-6.5*\dy) node[midway,above]{\texttt{PRCS, label}};
+\draw[msg] (\dx,-7.2*\dy) -- (0,-7.2*\dy)     node[midway,above]{\texttt{report(PRCS, label)}};
 
-\end{tikzpicture}}
-\caption{LLM-Sentry single-package analysis sequence.}
+\end{tikzpicture}
+\caption{Sequence diagram of a single-package analysis request in LLM-Sentry.}
 \label{fig:seqdiag}
-\end{figure}
+\end{figure*}
 
 %%% ============================================================
 \section{The PRCS Metric}
